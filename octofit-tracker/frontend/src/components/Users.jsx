@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import { fetchCollection } from '../api.js'
+import { API_BASE_URL, fetchCollection } from '../api.js'
+
+const USERS_ENDPOINT = `${API_BASE_URL}/api/users/`
 
 function Users() {
   const [users, setUsers] = useState([])
@@ -7,7 +9,7 @@ function Users() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchCollection('users')
+    fetchCollection(USERS_ENDPOINT, 'users')
       .then(setUsers)
       .catch((requestError) => {
         setError(requestError.message)

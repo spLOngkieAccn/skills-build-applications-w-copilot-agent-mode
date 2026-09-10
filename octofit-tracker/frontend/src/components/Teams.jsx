@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import { fetchCollection } from '../api.js'
+import { API_BASE_URL, fetchCollection } from '../api.js'
+
+const TEAMS_ENDPOINT = `${API_BASE_URL}/api/teams/`
 
 function Teams() {
   const [teams, setTeams] = useState([])
@@ -7,7 +9,7 @@ function Teams() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchCollection('teams')
+    fetchCollection(TEAMS_ENDPOINT, 'teams')
       .then(setTeams)
       .catch((requestError) => {
         setError(requestError.message)

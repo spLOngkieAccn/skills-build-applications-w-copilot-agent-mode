@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import { fetchCollection } from '../api.js'
+import { API_BASE_URL, fetchCollection } from '../api.js'
+
+const ACTIVITIES_ENDPOINT = `${API_BASE_URL}/api/activities/`
 
 function Activities() {
   const [activities, setActivities] = useState([])
@@ -7,7 +9,7 @@ function Activities() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchCollection('activities')
+    fetchCollection(ACTIVITIES_ENDPOINT, 'activities')
       .then(setActivities)
       .catch((requestError) => {
         setError(requestError.message)
