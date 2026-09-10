@@ -1,9 +1,3 @@
-const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
-export const isCodespaces = Boolean(codespaceName)
-export const API_BASE_URL = isCodespaces
-  ? `https://${codespaceName}-8000.app.github.dev`
-  : 'http://localhost:8000'
-
 export async function fetchCollection(endpoint, resourceName = 'resource') {
   const response = await fetch(endpoint)
 
