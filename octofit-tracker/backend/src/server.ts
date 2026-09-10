@@ -5,7 +5,7 @@ const codespaceName = process.env.CODESPACE_NAME;
 const codespace = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
   : undefined;
-export const apiUrl = codespace || `http://localhost:${port}`;
+export const apiUrl = codespace || `http://localhost:8000`;
 
 export const app = express();
 
