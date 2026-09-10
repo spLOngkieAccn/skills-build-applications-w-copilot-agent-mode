@@ -3,9 +3,10 @@ import { Activity, Leaderboard, Team, User, Workout } from './models/index.js';
 
 export const port = 8000;
 const codespaceName = process.env.CODESPACE_NAME;
-export const apiUrl = codespaceName
+const codespaceUrl = codespaceName
   ? `https://${codespaceName}-${port}.app.github.dev`
-  : `http://localhost:${port}`;
+  : undefined;
+export const apiUrl = codespaceUrl || `http://localhost:${port}`;
 
 export const app = express();
 
