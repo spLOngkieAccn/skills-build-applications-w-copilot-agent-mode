@@ -16,7 +16,7 @@ app.get('/api/health', (_request, response) => {
   response.json({ status: 'ok', apiUrl });
 });
 
-app.get('/api/users/', async (_request, response) => {
+app.get('/api/users', async (_request, response) => {
   response.json(await User.find().sort({ name: 1 }));
 });
 
@@ -24,7 +24,7 @@ app.get('/api/teams/', async (_request, response) => {
   response.json(await Team.find().populate('members', 'name username'));
 });
 
-app.get('/api/activities/', async (_request, response) => {
+app.get('/api/activities', async (_request, response) => {
   response.json(await Activity.find().populate('user', 'name username').sort({ completedAt: -1 }));
 });
 
@@ -39,7 +39,7 @@ app.get('/api/workouts/', async (_request, response) => {
 async function startServer() {
   await mongoose.connect(connectionString);
   console.log('Connected to octofit_db');
-  app.listen(port, () => {
+  app.listen(port, '0.0.0.0', () => {
     console.log(`OctoFit Tracker API listening at ${apiUrl}`);
   });
 }
