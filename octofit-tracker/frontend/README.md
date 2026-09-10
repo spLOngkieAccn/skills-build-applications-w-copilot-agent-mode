@@ -8,7 +8,7 @@ Define `VITE_CODESPACE_NAME` in `octofit-tracker/frontend/.env.local` when runni
 VITE_CODESPACE_NAME=your-codespace-name
 ```
 
-The app then calls `https://your-codespace-name-8000.app.github.dev/api/...`. When the variable is not defined, it safely falls back to `http://localhost:8000` for local development.
+The app then calls `https://your-codespace-name-8000.app.github.dev/api/...`. Vite also detects the Codespaces-provided `CODESPACE_NAME` automatically during development and builds, while `VITE_CODESPACE_NAME` takes precedence when explicitly defined. When neither variable is available, it safely falls back to `http://localhost:8000`.
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
