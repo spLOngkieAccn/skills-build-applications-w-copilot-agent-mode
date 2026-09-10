@@ -9,7 +9,6 @@ const codespace = codespaceName
   ? `https://${codespaceName}-${port}.app.github.dev`
   : undefined;
 export const apiUrl = codespace || `http://localhost:${port}`;
-
 const allowedOrigins = new Set([
   'http://localhost:5173',
   'http://127.0.0.1:5173',
